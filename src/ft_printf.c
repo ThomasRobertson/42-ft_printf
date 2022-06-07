@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 21:02:17 by troberts          #+#    #+#             */
-/*   Updated: 2022/06/06 03:13:05 by troberts         ###   ########.fr       */
+/*   Updated: 2022/06/07 18:30:48 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,11 @@ int	process_args(va_list args, const char *fmt)
 		return (-1);
 }
 
-// int	process_args(va_list args, const char *fmt)
-// {
-// 	if (ft_strchr("cspdiuxX%", fmt[0]))
-// 		return (process_args_conversion(args, fmt));
-// 	else
-// 		return (-1);
-
-// }
-
 int	scan_args(va_list args, const char *fmt)
 {
 	int	i;
 	int	nbr_print;
-	int tmp;
+	int	tmp;
 
 	i = 0;
 	nbr_print = 0;

@@ -6,13 +6,13 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 21:20:04 by troberts          #+#    #+#             */
-/*   Updated: 2022/06/05 22:16:55 by troberts         ###   ########.fr       */
+/*   Updated: 2022/06/07 18:31:56 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-unsigned char	get_char(va_list args)
+static unsigned char	get_char(va_list args)
 {
 	unsigned char	c;
 

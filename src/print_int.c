@@ -6,13 +6,13 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:12:16 by troberts          #+#    #+#             */
-/*   Updated: 2022/06/06 02:18:12 by troberts         ###   ########.fr       */
+/*   Updated: 2022/06/07 18:32:02 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*get_int(va_list args)
+static char	*get_int(va_list args)
 {
 	int	integer;
 
