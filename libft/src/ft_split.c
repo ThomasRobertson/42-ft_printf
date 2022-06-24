@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 05:03:50 by troberts          #+#    #+#             */
-/*   Updated: 2022/05/13 22:12:07 by troberts         ###   ########.fr       */
+/*   Updated: 2022/06/16 03:02:01 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static char	*nword(char **ptr, char c)
 		(*ptr)++;
 	while ((*ptr)[len] != c && (*ptr)[len])
 		len++;
-	word = (char *)malloc(sizeof(*word) * (len + 1));
+	word = malloc(sizeof(*word) * (len + 1));
 	if (word == NULL)
 		return (NULL);
 	word = ft_strncpy_static(word, *ptr, len);
@@ -81,10 +81,8 @@ char	**ft_split(char const *s, char c)
 	size_t	i;
 	char	*ptr;
 
-	if (s == NULL)
-		return (NULL);
 	nbr_word = count_word(s, c);
-	str = (char **)malloc(sizeof(*str) * (nbr_word + 1));
+	str = malloc(sizeof(*str) * (nbr_word + 1));
 	if (str == NULL)
 		return (NULL);
 	ptr = (char *)s;

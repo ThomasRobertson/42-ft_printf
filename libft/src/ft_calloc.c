@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/09 21:19:29 by troberts          #+#    #+#             */
-/*   Updated: 2022/04/18 18:30:44 by troberts         ###   ########.fr       */
+/*   Created: 2022/04/11 21:11:56 by troberts          #+#    #+#             */
+/*   Updated: 2022/06/24 12:21:19 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+static void	*ft_memalloc_static(size_t size)
 {
-	char	*str;
-	size_t	len;
+	void	*ptr;
 
-	len = ft_strlen(s);
-	str = (char *)malloc(sizeof(*str) * len + 1);
-	if (str == NULL)
+	ptr = malloc(size);
+	if (ptr == NULL)
 		return (NULL);
-	ft_memcpy(str, s, len);
-	str[len] = 0;
-	return (str);
+	ft_bzero(ptr, size);
+	return (ptr);
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*ptr;
+	size_t	overflowcheck;
+
+	if (nmemb == 0 || size == 0)
+		return (malloc(0));
+	overflowcheck = nmemb * size;
+	if (overflowcheck / nmemb != size)
+		return (malloc(0));
+	ptr = ft_memalloc_static(nmemb * size);
+	return (ptr);
 }

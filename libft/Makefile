@@ -6,7 +6,7 @@
 #    By: troberts <troberts@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 01:33:16 by troberts          #+#    #+#              #
-#    Updated: 2022/06/05 18:20:39 by troberts         ###   ########.fr        #
+#    Updated: 2022/06/24 12:54:26 by troberts         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,85 +14,91 @@
 #                              VARIABLE REFERENCE                              #
 # **************************************************************************** #
 
-CC= gcc
-CFLAGS= -Wall -Wextra -Werror
 NAME= libft.a
+
+CFLAGS= -Wall -Wextra -Werror -I $(INCLUDES)
 
 AR= ar
 ARARCH= -cr
 ARINDEX= -s
 
+INCLUDES= include
+OBJ_DIR= obj
+SRC_DIR= src
+
 # **************************************************************************** #
 #                                .C & .H FILES                                 #
 # **************************************************************************** #
 
-SRC=	ft_atoi.c	\
-		ft_atol.c	\
-		ft_atoll.c	\
-		ft_bzero.c	\
-		ft_calloc.c	\
-		ft_isalnum.c	\
-		ft_isalpha.c	\
-		ft_isascii.c	\
-		ft_isdigit.c	\
-		ft_isprint.c	\
-		ft_isspace.c	\
-		ft_itoa.c	\
-		ft_lstadd_back.c	\
-		ft_lstadd_front.c	\
-		ft_lstclear.c	\
-		ft_lstdelone.c	\
-		ft_lstiter.c	\
-		ft_lstlast.c	\
-		ft_lstmap.c	\
-		ft_lstnew.c	\
-		ft_lstsize.c	\
-		ft_memalloc.c	\
-		ft_memccpy.c	\
-		ft_memchr.c	\
-		ft_memcmp.c	\
-		ft_memcpy.c	\
-		ft_memdel.c	\
-		ft_memmove.c	\
-		ft_memset.c	\
-		ft_memrchr.c	\
-		ft_putchar.c	\
-		ft_putchar_fd.c	\
-		ft_putendl.c	\
-		ft_putendl_fd.c	\
-		ft_putnbr.c	\
-		ft_putnbr_fd.c	\
-		ft_putstr.c	\
-		ft_putstr_fd.c	\
-		ft_split.c	\
-		ft_strcat.c	\
-		ft_strchr.c	\
-		ft_strclr.c	\
-		ft_strcmp.c	\
-		ft_strcpy.c	\
-		ft_strdel.c	\
-		ft_strdup.c	\
-		ft_strequ.c	\
-		ft_striter.c	\
-		ft_striteri.c	\
-		ft_strjoin.c	\
-		ft_strlcat.c	\
-		ft_strlcpy.c	\
-		ft_strlen.c	\
-		ft_strmap.c	\
-		ft_strmapi.c	\
-		ft_strncat.c	\
-		ft_strncmp.c	\
-		ft_strncpy.c	\
-		ft_strnequ.c	\
-		ft_strnew.c	\
-		ft_strnstr.c	\
-		ft_strrchr.c	\
-		ft_strstr.c	\
-		ft_strtrim.c	\
-		ft_substr.c	\
-		ft_tolower.c	\
-		ft_toupper.c
+SRC=	$(SRC_DIR)/ft_atoi.c	\
+		$(SRC_DIR)/ft_atol.c	\
+		$(SRC_DIR)/ft_atoll.c	\
+		$(SRC_DIR)/ft_bzero.c	\
+		$(SRC_DIR)/ft_calloc.c	\
+		$(SRC_DIR)/ft_isalnum.c	\
+		$(SRC_DIR)/ft_isalpha.c	\
+		$(SRC_DIR)/ft_isascii.c	\
+		$(SRC_DIR)/ft_isdigit.c	\
+		$(SRC_DIR)/ft_isprint.c	\
+		$(SRC_DIR)/ft_isspace.c	\
+		$(SRC_DIR)/ft_itoa.c	\
+		$(SRC_DIR)/ft_lstadd_back.c	\
+		$(SRC_DIR)/ft_lstadd_front.c	\
+		$(SRC_DIR)/ft_lstclear.c	\
+		$(SRC_DIR)/ft_lstdelone.c	\
+		$(SRC_DIR)/ft_lstiter.c	\
+		$(SRC_DIR)/ft_lstlast.c	\
+		$(SRC_DIR)/ft_lstmap.c	\
+		$(SRC_DIR)/ft_lstnew.c	\
+		$(SRC_DIR)/ft_lstsize.c	\
+		$(SRC_DIR)/ft_memalloc.c	\
+		$(SRC_DIR)/ft_memccpy.c	\
+		$(SRC_DIR)/ft_memchr.c	\
+		$(SRC_DIR)/ft_memcmp.c	\
+		$(SRC_DIR)/ft_memcpy.c	\
+		$(SRC_DIR)/ft_memdel.c	\
+		$(SRC_DIR)/ft_memmove.c	\
+		$(SRC_DIR)/ft_memset.c	\
+		$(SRC_DIR)/ft_memrchr.c	\
+		$(SRC_DIR)/ft_putchar.c	\
+		$(SRC_DIR)/ft_putchar_fd.c	\
+		$(SRC_DIR)/ft_putendl.c	\
+		$(SRC_DIR)/ft_putendl_fd.c	\
+		$(SRC_DIR)/ft_putnbr.c	\
+		$(SRC_DIR)/ft_putnbr_fd.c	\
+		$(SRC_DIR)/ft_putstr.c	\
+		$(SRC_DIR)/ft_putstr_fd.c	\
+		$(SRC_DIR)/ft_split.c	\
+		$(SRC_DIR)/ft_strcat.c	\
+		$(SRC_DIR)/ft_strchr.c	\
+		$(SRC_DIR)/ft_strclr.c	\
+		$(SRC_DIR)/ft_strcmp.c	\
+		$(SRC_DIR)/ft_strcpy.c	\
+		$(SRC_DIR)/ft_strdel.c	\
+		$(SRC_DIR)/ft_strdup.c	\
+		$(SRC_DIR)/ft_strequ.c	\
+		$(SRC_DIR)/ft_striter.c	\
+		$(SRC_DIR)/ft_striteri.c	\
+		$(SRC_DIR)/ft_strjoin.c	\
+		$(SRC_DIR)/ft_strlcat.c	\
+		$(SRC_DIR)/ft_strlcpy.c	\
+		$(SRC_DIR)/ft_strlen.c	\
+		$(SRC_DIR)/ft_strmap.c	\
+		$(SRC_DIR)/ft_strmapi.c	\
+		$(SRC_DIR)/ft_strncat.c	\
+		$(SRC_DIR)/ft_strncmp.c	\
+		$(SRC_DIR)/ft_strncpy.c	\
+		$(SRC_DIR)/ft_strnequ.c	\
+		$(SRC_DIR)/ft_strnew.c	\
+		$(SRC_DIR)/ft_strnstr.c	\
+		$(SRC_DIR)/ft_strrchr.c	\
+		$(SRC_DIR)/ft_strstr.c	\
+		$(SRC_DIR)/ft_strtrim.c	\
+		$(SRC_DIR)/ft_substr.c	\
+		$(SRC_DIR)/ft_tolower.c	\
+		$(SRC_DIR)/ft_toupper.c
+
+OBJ=	$(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 
 # **************************************************************************** #
 #                                HEADER CONFIG                                 #
@@ -109,6 +115,20 @@ COLOR_PURPLE	= \033[0;35m
 COLOR_CYAN		= \033[0;36m
 COLOR_WHITE		= \033[0;37m
 COLOR_END		= \033[m
+
+HEADER =			@echo "${COLOR_CYAN}\
+					\n/* ************************************************************************** */\
+					\n/*                                                                            */\
+					\n/*            :::      ::::::::                                               */\
+					\n/*          :+:      :+:    :+:                                               */\
+					\n/*        +:+ +:+         +:${HEADER_NAME}*/\
+					\n/*      +\#+  +:+       +\#+                                                    */\
+					\n/*    +\#+\#+\#+\#+\#+   +\#+                       Thomas Robertson                */\
+					\n/*         \#+\#    \#+\#                     <troberts@student.42.fr>            */\
+					\n/*        \#\#\#   \#\#\#\#\#\#\#\#.fr                                                   */\
+					\n/*                                                                            */\
+					\n/* ************************************************************************** */\n\
+					${COLOR_END}"
 
 HEADER_LIBRARY =	@echo "${COLOR_YELLOW}\
 					\n/* ************************************************************************** */\
@@ -139,53 +159,46 @@ HEADER_NORM =		@echo "${COLOR_PURPLE}\
 #                                    RULES                                     #
 # **************************************************************************** #
 
-all: header $(NAME)
-
-header:
-	@echo "${COLOR_CYAN}"
-	@echo "/* ************************************************************************** */"
-	@echo "/*                                                                            */"
-	@echo "/*            :::      ::::::::                                               */"
-	@echo "/*          :+:      :+:    :+:                                               */"
-	@echo "/*        +:+ +:+         +:${HEADER_NAME}*/"
-	@echo "/*      +#+  +:+       +#+                                                    */"
-	@echo "/*    +#+#+#+#+#+   +#+                       Thomas Robertson                */"
-	@echo "/*         #+#    #+#                     <troberts@student.42.fr>            */"
-	@echo "/*        ###   ########.fr                                                   */"
-	@echo "/*                                                                            */"
-	@echo "/* ************************************************************************** */"
-	@echo "${COLOR_END}"
-
-header_assemble:
-	@echo "${COLOR_GREEN}"
-	@echo "/* ************************************************************************** */"
-	@echo "/*                    PREPROCESSING, COMPILING, ASSEMBLY...                   */"
-	@echo "/* ************************************************************************** */"
-	@echo "${COLOR_END}"
-
-OBJ= $(SRC:.c=.o)
-
-%.o: %.c
-	$(CC) $(CFLAGS) -o $@ -c $<
+all: $(NAME)
 
 $(NAME): $(OBJ)
+	$(HEADER)
 	$(HEADER_LIBRARY)
 	$(AR) $(ARARCH) $@ $^
 	$(AR) $(ARINDEX) $@
 
-clean: header
-	${HEADER_CLEAN}
-	@rm -f $(OBJ)
+$(OBJ): | $(OBJ_DIR)
 
+$(OBJ_DIR):
+	mkdir -p $@
+
+$(OBJ): $(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+header:
+	$(HEADER)
+
+cleanobj:
+	${HEADER_CLEAN}
+	rm -f $(OBJ)
+
+cleanobjdir: cleanobj
+	rm -rf $(OBJ_DIR)
+
+clean: header cleanobjdir
+	
 fclean: header clean
 	${HEADER_FCLEAN}
-	@rm -f $(NAME)
-
-re: header fclean all
+	rm -f $(NAME)
 
 norm: header
 	${HEADER_NORM}
-	norminette -R CheckForbiddenSourceHeader *.c
-	norminette -R CheckDefine *.h
+	@echo "$(COLOR_CYAN)"
+	norminette $(SRC_DIR)
+	@echo "$(COLOR_PURPLE)"
+	norminette $(INCLUDES)
+	@echo "$(COLOR_END)"
 
-.PHONY: all clean fclean re norm header
+re: header fclean all
+
+.PHONY: all clean fclean re norm header cleanobj cleanobjdir

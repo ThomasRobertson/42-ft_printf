@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 01:45:26 by troberts          #+#    #+#             */
-/*   Updated: 2022/04/19 22:00:27 by troberts         ###   ########.fr       */
+/*   Updated: 2022/06/24 12:18:35 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	*ft_strnew_static(size_t size)
 {
 	char	*str;
 
-	str = (char *) malloc(sizeof(*str) * size + 1);
+	str = malloc(sizeof(*str) * size + 1);
 	if (str == NULL)
 		return (NULL);
 	while (size > 0)
@@ -40,12 +40,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*str;
 	char	*ptr;
 
-	if (s1 == NULL)
-		return ((char *)s2);
-	if (s2 == NULL)
-		return ((char *)s1);
-	if (s1 == NULL && s2 == NULL)
-		return (NULL);
 	len = ft_strlen(s1) + ft_strlen(s2);
 	str = ft_strnew_static(len);
 	ptr = str;
