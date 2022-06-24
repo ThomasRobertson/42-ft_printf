@@ -6,7 +6,7 @@
 #    By: troberts <troberts@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 01:33:16 by troberts          #+#    #+#              #
-#    Updated: 2022/06/22 19:41:10 by troberts         ###   ########.fr        #
+#    Updated: 2022/06/24 13:10:35 by troberts         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -144,14 +144,14 @@ header:
 	$(HEADER)
 
 cleanobj:
+	${HEADER_CLEAN}
 	rm -f $(OBJ)
 
 cleanobjdir: cleanobj
 	rm -rf $(OBJ_DIR)
 
 clean: header cleanobjdir cleanlibft
-	${HEADER_CLEAN}
-
+	
 cleanlibft:
 	make -C $(LIBFT_DIR) clean
 
@@ -178,4 +178,4 @@ norm: header
 test: all
 	@gcc -g -Wno-format-security main.c -L. -lftprintf -I $(INCLUDES) -o test
 
-.PHONY: all clean fclean re norm header test makelibf
+.PHONY: all clean fclean re norm header test makelibf cleanobj cleanobjdir fcleanlibft
