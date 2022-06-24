@@ -6,7 +6,7 @@
 #    By: troberts <troberts@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 01:33:16 by troberts          #+#    #+#              #
-#    Updated: 2022/06/24 13:10:35 by troberts         ###   ########.fr        #
+#    Updated: 2022/06/24 13:47:39 by troberts         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -121,6 +121,7 @@ all: $(NAME)
 $(NAME): $(OBJ) $(LIBFT_LIB)
 	$(HEADER)
 	$(HEADER_LIBRARY)
+	@cp $(LIBFT_LIB) ./$(NAME)
 	$(AR) $(ARARCH) $@ $(OBJ)
 	$(AR) $(ARINDEX) $@
 
@@ -130,7 +131,6 @@ makelibf :
 	$(HEADER_ENTERLIB)
 	@make -C $(LIBFT_DIR)
 	$(HEADER_EXITLIB)
-	@cp $(LIBFT_LIB) ./$(NAME)
 
 $(OBJ): | $(OBJ_DIR)
 
