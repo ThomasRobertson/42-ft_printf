@@ -6,13 +6,13 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 23:00:55 by troberts          #+#    #+#             */
-/*   Updated: 2022/06/07 18:31:13 by troberts         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:07:16 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*get_ptr(va_list args)
+static char	*get_ptr(va_list args)
 {
 	size_t	ptr;
 

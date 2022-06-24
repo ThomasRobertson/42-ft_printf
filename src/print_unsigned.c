@@ -6,13 +6,13 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 21:59:49 by troberts          #+#    #+#             */
-/*   Updated: 2022/06/06 02:18:32 by troberts         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:07:24 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*get_unsigned(va_list args)
+static char	*get_unsigned(va_list args)
 {
 	unsigned int	integer;
 

@@ -6,13 +6,13 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 21:02:17 by troberts          #+#    #+#             */
-/*   Updated: 2022/06/07 18:30:48 by troberts         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:11:44 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	process_args(va_list args, const char *fmt)
+static int	process_args(va_list args, const char *fmt)
 {
 	if (fmt[0] == '%')
 		return (write(1, "%", 1));
@@ -34,7 +34,7 @@ int	process_args(va_list args, const char *fmt)
 		return (-1);
 }
 
-int	scan_args(va_list args, const char *fmt)
+static int	scan_args(va_list args, const char *fmt)
 {
 	int	i;
 	int	nbr_print;

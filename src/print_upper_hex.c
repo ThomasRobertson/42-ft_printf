@@ -6,13 +6,13 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 22:51:49 by troberts          #+#    #+#             */
-/*   Updated: 2022/06/06 02:18:38 by troberts         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:07:28 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*get_upper_hex(va_list args)
+static char	*get_upper_hex(va_list args)
 {
 	unsigned int	number;
 	char			*str;

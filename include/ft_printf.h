@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 21:04:22 by troberts          #+#    #+#             */
-/*   Updated: 2022/06/07 18:31:36 by troberts         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:11:12 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,12 @@ char			*ft_uitoa(size_t n, int base_lenght);
 /*                                 CONVERSION                                 */
 /* ************************************************************************** */
 
-char			*get_int(va_list args);
 int				print_int(va_list args);
-unsigned char	get_char(va_list args);
 int				print_char(va_list args);
-char			*get_str(va_list args);
 int				print_str(va_list args);
-char			*get_unsigned(va_list args);
 int				print_unsigned(va_list args);
-char			*get_lower_hex(va_list args);
 int				print_lower_hex(va_list args);
-char			*get_upper_hex(va_list args);
 int				print_upper_hex(va_list args);
-char			*get_ptr(va_list args);
 int				print_ptr(va_list args);
 
 /* ************************************************************************** */
