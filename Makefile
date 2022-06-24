@@ -6,7 +6,7 @@
 #    By: troberts <troberts@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/04 01:33:16 by troberts          #+#    #+#              #
-#    Updated: 2022/06/06 02:11:09 by troberts         ###   ########.fr        #
+#    Updated: 2022/06/22 19:41:10 by troberts         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,31 +14,37 @@
 #                              VARIABLE REFERENCE                              #
 # **************************************************************************** #
 
-CC= gcc
-CFLAGS= -Wall -Wextra -Werror
 NAME= libftprintf.a
-LIBFT= libft
+
+# CC= gcc
+CFLAGS= -Wall -Wextra -Werror -I $(INCLUDES)
 
 AR= ar
 ARARCH= -cr
 ARINDEX= -s
 
+LIBFT_DIR= libft
+LIBFT_LIB= $(LIBFT_DIR)/libft.a
 INCLUDES= include
-OBJ_DIR= obj/
+OBJ_DIR= obj
+SRC_DIR= src
+
 
 # **************************************************************************** #
 #                                .C & .H FILES                                 #
 # **************************************************************************** #
 
-SRC=	src/ft_printf.c \
-		src/itoa_nbrlen.c \
-		src/print_int.c \
-		src/print_char.c \
-		src/print_str.c \
-		src/print_unsigned.c \
-		src/print_lower_hex.c \
-		src/print_upper_hex.c \
-		src/print_ptr.c
+SRC=	$(SRC_DIR)/ft_printf.c \
+		$(SRC_DIR)/itoa_nbrlen.c \
+		$(SRC_DIR)/print_int.c \
+		$(SRC_DIR)/print_char.c \
+		$(SRC_DIR)/print_str.c \
+		$(SRC_DIR)/print_unsigned.c \
+		$(SRC_DIR)/print_lower_hex.c \
+		$(SRC_DIR)/print_upper_hex.c \
+		$(SRC_DIR)/print_ptr.c
+
+OBJ=	$(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 
 # **************************************************************************** #
 #                                HEADER CONFIG                                 #
@@ -55,6 +61,20 @@ COLOR_PURPLE	= \033[0;35m
 COLOR_CYAN		= \033[0;36m
 COLOR_WHITE		= \033[0;37m
 COLOR_END		= \033[m
+
+HEADER =			@echo "${COLOR_CYAN}\
+					\n/* ************************************************************************** */\
+					\n/*                                                                            */\
+					\n/*            :::      ::::::::                                               */\
+					\n/*          :+:      :+:    :+:                                               */\
+					\n/*        +:+ +:+         +:${HEADER_NAME}*/\
+					\n/*      +\#+  +:+       +\#+                                                    */\
+					\n/*    +\#+\#+\#+\#+\#+   +\#+                       Thomas Robertson                */\
+					\n/*         \#+\#    \#+\#                     <troberts@student.42.fr>            */\
+					\n/*        \#\#\#   \#\#\#\#\#\#\#\#.fr                                                   */\
+					\n/*                                                                            */\
+					\n/* ************************************************************************** */\n\
+					${COLOR_END}"
 
 HEADER_LIBRARY =	@echo "${COLOR_YELLOW}\
 					\n/* ************************************************************************** */\
@@ -80,63 +100,82 @@ HEADER_NORM =		@echo "${COLOR_PURPLE}\
 					\n/* ************************************************************************** */\n\
 					${COLOR_END}"
 
+HEADER_ENTERLIB =	@echo "${COLOR_GREEN}\
+					\n/* ************************************************************************** */\
+					\n/*                               ENTERING LIBFT                               */\
+					\n/* ************************************************************************** */\n\
+					${COLOR_END}"
+
+HEADER_EXITLIB =	@echo "${COLOR_GREEN}\
+					\n/* ************************************************************************** */\
+					\n/*                               EXITING LIBFT                                */\
+					\n/* ************************************************************************** */\n\
+					${COLOR_END}"
 
 # **************************************************************************** #
 #                                    RULES                                     #
 # **************************************************************************** #
 
-all: header $(NAME)
+all: $(NAME)
 
-header:
-	@echo "${COLOR_CYAN}"
-	@echo "/* ************************************************************************** */"
-	@echo "/*                                                                            */"
-	@echo "/*            :::      ::::::::                                               */"
-	@echo "/*          :+:      :+:    :+:                                               */"
-	@echo "/*        +:+ +:+         +:${HEADER_NAME}*/"
-	@echo "/*      +#+  +:+       +#+                                                    */"
-	@echo "/*    +#+#+#+#+#+   +#+                       Thomas Robertson                */"
-	@echo "/*         #+#    #+#                     <troberts@student.42.fr>            */"
-	@echo "/*        ###   ########.fr                                                   */"
-	@echo "/*                                                                            */"
-	@echo "/* ************************************************************************** */"
-	@echo "${COLOR_END}"
-
-OBJ= $(SRC:.c=.o)
-
-%.o: %.c | $(OBJCREATEDIR)
-	$(CC) $(CFLAGS) -I $(INCLUDES) -o $@ -c $<
-
-$(OBJCREATEDIR):
-	mkdir -p $(OBJ_DIR)
-
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(LIBFT_LIB)
+	$(HEADER)
 	$(HEADER_LIBRARY)
-	make -C $(LIBFT)
-	cp libft/libft.a ./$(NAME)
-	$(AR) $(ARARCH) $@ $^
+	$(AR) $(ARARCH) $@ $(OBJ)
 	$(AR) $(ARINDEX) $@
 
-clean: header
-	${HEADER_CLEAN}
-	rm -f $(OBJ)
-	make -C $(LIBFT) clean
+$(LIBFT_LIB): makelibf ;
 
-fclean: header clean
+makelibf :
+	$(HEADER_ENTERLIB)
+	@make -C $(LIBFT_DIR)
+	$(HEADER_EXITLIB)
+	@cp $(LIBFT_LIB) ./$(NAME)
+
+$(OBJ): | $(OBJ_DIR)
+
+$(OBJ_DIR):
+	mkdir -p $@
+
+$(OBJ): $(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+header:
+	$(HEADER)
+
+cleanobj:
+	rm -f $(OBJ)
+
+cleanobjdir: cleanobj
+	rm -rf $(OBJ_DIR)
+
+clean: header cleanobjdir cleanlibft
+	${HEADER_CLEAN}
+
+cleanlibft:
+	make -C $(LIBFT_DIR) clean
+
+fcleanlibft:
+	make -C $(LIBFT_DIR) fclean
+	rm -f libft.a
+
+fclean: header clean fcleanlibft
 	${HEADER_FCLEAN}
 	rm -f $(NAME)
-	make -C $(LIBFT) fclean
 
 re: header fclean all
 
 norm: header
 	${HEADER_NORM}
-	norminette src
+	@echo "$(COLOR_GREEN)"
+	norminette $(LIBFT_DIR)
+	@echo "$(COLOR_CYAN)"
+	norminette $(SRC_DIR)
+	@echo "$(COLOR_PURPLE)"
 	norminette $(INCLUDES)
-
-bonus : all
+	@echo "$(COLOR_END)"
 
 test: all
 	@gcc -g -Wno-format-security main.c -L. -lftprintf -I $(INCLUDES) -o test
 
-.PHONY: all clean fclean re norm header test bonus
+.PHONY: all clean fclean re norm header test makelibf
