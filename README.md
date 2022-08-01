@@ -11,19 +11,19 @@
 
 <p align="center">
   <a href="https://github.com/ThomasRobertson/42-ft_printf">
-    <img src="https://img.shields.io/tokei/lines/github/ThomasRobertson/42-ft_printf?style=flat-square"
+    <img src="https://tokei.rs/b1/github/ThomasRobertson/42-ft_printf"
          alt="Line of Code">
   </a>
   <a href="https://github.com/ThomasRobertson/42-ft_printf">
-    <img src="https://img.shields.io/github/languages/code-size/ThomasRobertson/42-ft_printf?style=flat-square"
+    <img src="https://img.shields.io/github/languages/code-size/ThomasRobertson/42-ft_printf"
          alt="Size">
   </a>
   <a href="https://github.com/ThomasRobertson/42-ft_printf">
-    <img src="https://img.shields.io/github/license/ThomasRobertson/42-ft_printf?style=flat-square"
+    <img src="https://img.shields.io/github/languages/top/ThomasRobertson/42-ft_printf"
          alt="License">
   </a>
   <a href="https://github.com/ThomasRobertson/42-ft_printf">
-    <img src="https://img.shields.io/github/languages/top/ThomasRobertson/42-ft_printf?style=flat-square"
+    <img src="https://img.shields.io/github/license/ThomasRobertson/42-ft_printf"
          alt="License">
   </a>
   <a href="https://github.com/ThomasRobertson/42-ft_printf/actions/workflows/norminette-action.yml">
