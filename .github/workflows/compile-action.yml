@@ -7,16 +7,23 @@ jobs:
     runs-on: ubuntu-20.04
     name: norminette
     steps:
-    - uses: actions/checkout@v2
-    - run:   |
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Install GCC and Clang
+      run:   |
          sudo apt update
          sudo apt install -y gcc clang
         shell: bash
-    - run:   make
+
+    - name: Compiling using GCC
+      run:   make
         shell: bash
          env:
            CC:  gcc
-    - run:   make
+
+    - name: Compiling using Clang
+      run:   make
         shell: bash
          env:
            CC:  clang
