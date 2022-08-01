@@ -27,7 +27,7 @@
          alt="License">
   </a>
   <a href="https://github.com/ThomasRobertson/42-ft_printf/actions/workflows/norminette-action.yml">
-    <img src="https://github.com/ThomasRobertson/42-ft_printf/actions/workflows/norminette-action.yml/badge.svg"
+    <img src="https://github.com/ThomasRobertson/42-ft_printf/actions/workflows/Build/badge.svg"
          alt="Norminette Action">
   </a> 
 </p>
