@@ -2,10 +2,13 @@ name: Norm
 
 on: [push, pull_request]
 
+permissions:
+  contents: read
+  pull-requests: read
+
 jobs:
   norminette_job:
     runs-on: ubuntu-20.04
-    name: norminette
     steps:
     - name: Checkout
       uses: actions/checkout@v2
